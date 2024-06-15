@@ -29,7 +29,7 @@ export const Post = ({ post }: PostProps) => {
   ) as PostModels.Picture;
 
   return (
-    <div className="min-w-60 grid bg-gray-100 rounded-md ml-0 m-6">
+    <div className="min-w-60 max-w-64 grid bg-gray-100 rounded-md ml-0 m-6 transition-all">
       <div id="carousel" className="relative">
         <div className="grid place-items-center bg-slate-400 hover:bg-slate-200 opacity-40 absolute top-[50%] left-0 translate-y-[-50%]">
           <Image

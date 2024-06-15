@@ -10,14 +10,15 @@ import Sidebar from "@/app/components/sidebar.component";
 interface HomePageProps {}
 
 export const HomePage = ({ children }: any) => {
-  const [posts, setPosts] = useState<Array<PostModels.Post>>(
-    useStore((state: any) => state.posts)
-  );
-  const isShowSidebar = useStore((state: any) => state.isShowSidebar);
+  const [hideAlert, isHideAlert] = useState<Boolean>(false);
 
-  const [hideAlert, isHideAlert] = useState<Boolean>(true);
+  const posts = useStore((state: any) => state.posts);
+  const { isShowSidebar } = useStore((state: any) => state);
+
   const pathName = usePathname();
+
   const profilePic = "";
+
   useEffect(() => {
     !hideAlert &&
       setTimeout(() => {
@@ -28,12 +29,11 @@ export const HomePage = ({ children }: any) => {
   return (
     <main
       className={`${
-        !isShowSidebar ? "grid-cols-[275px_1fr] grid " : "grid-cols-[0px_1fr] grid"
-      } overflow-hidden max-h-screen`}
+        isShowSidebar
+          ? "grid-cols-[max-content_1fr] grid "
+          : "grid-cols-[0px_1fr] grid"
+      } overflow-hidden max-h-screen transition-all`}
     >
-    {/* //  <main
-    //   className="grid-cols-[275px_1fr] md:grid overflow-hidden max-h-screen"
-    // > */}
       <Sidebar hidden={isShowSidebar ? true : false} />
       <div className="grid-row-[max-content_max-content] min-h-screen max-h-screen min-w-full items-center justify-between relative ">
         <div

@@ -12,11 +12,29 @@ interface NavbarProps {
 }
 
 export const Navbar = ({ ...props }: NavbarProps) => {
-  const showSidebar = useStore((state: any) => state.showSidebar);
-
   const { profilePic } = props;
+  const { showSidebar, isShowSidebar } = useStore((state: any) => state);
+
   return (
-    <div className="w-full grid grid-cols-[1fr_max-content_max-content_max-content_max-content] place-items-center gap-4 p-6">
+    <div
+      className={`w-full grid 
+    ${
+      isShowSidebar
+        ? "grid-cols-[1fr_max-content_max-content_max-content]"
+        : "grid-cols-[max-content_1fr_max-content_max-content_max-content]"
+    }    
+    place-items-center gap-4 p-6`}
+    >
+      <button className={`${isShowSidebar ? "hidden" : ""}`}>
+        <Image
+          className="hover:scale-105"
+          src={menuIcon}
+          alt="My SVG"
+          width={26}
+          height={26}
+          onClick={() => showSidebar()}
+        />
+      </button>
       <div
         id="search"
         className="w-full border-[1px] p-2 border-gray-400 bg-white rounded-full"
@@ -43,16 +61,6 @@ export const Navbar = ({ ...props }: NavbarProps) => {
           alt="My SVG"
         />
       </Link>
-      <button>
-        <Image
-          className="hover:scale-105"
-          src={menuIcon}
-          alt="My SVG"
-          width={26}
-          height={26}
-          onClick={() => showSidebar()}
-        />
-      </button>
     </div>
   );
 };

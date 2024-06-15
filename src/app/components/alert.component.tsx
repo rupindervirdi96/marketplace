@@ -8,8 +8,8 @@ interface AlertProps {
 
 export const Alert = ({ ...props }: AlertProps) => {
   const alertColourVariants = {
-    info: "bg-yellow-300",
-    warn: "red",
+    info: "bg-yellow-200/90",
+    warn: "bg-red-400/90",
   };
 
   const { message, hide } = props;
@@ -20,7 +20,7 @@ export const Alert = ({ ...props }: AlertProps) => {
       className={`absolute left-[50%] text-lg top-full ${
         !hide ? "translate-y-[-150%]" : ""
       } translate-x-[-50%] ${
-        alertColourVariants.info
+        alertColourVariants.warn
       } py-2 px-6 rounded-md transition-all ease-in`}
     >
       <span>{message}</span>

@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  transition: all 200ms ease linear;
+  transition: all 2000ms ease linear;
   scroll-behavior: smooth;
 }
 
